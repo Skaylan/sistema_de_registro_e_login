@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %} Login {% endblock %}
+
+
+{% block header %}
+<h1 class="h1-header">Sky System</h1>
+<header>
+    <nav>
+        <li><a href="/register">Registre-se</a></li>
+        <li><a href="/login">Entrar</a></li>
+        <li><a href="/index">Home</a></li>
+    </nav>
+</header>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<h1 class="l-title">Login</h1>
+<h2 class="l-h2-uname">Username</h2>
+<h2 class="l-h2-pword">Password</h2>
+<form method="POST">
+    <input class="input i-username" type="text" name="username" placeholder="username" required>
+    <input class="input i-pass" type="password" name="password" placeholder="password" required>
+    <button id="button-login">Login</button>
+    {% with message = get_flashed_messages() %}
+        {% for msg in message %}    
+            <h2 class="h2-flash">{{ msg }}</h2>
+        {% endfor %}
+    {% endwith %}
+</form>
+
+{% endblock %}
