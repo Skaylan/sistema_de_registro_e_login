@@ -35,7 +35,7 @@ def login():
                     session['user'] = username
                     return redirect(url_for('user'))
             else:
-                flash('Usuario ou senha icorretos!')
+                flash('Usuario e/ou senha incorretos!')
     return render_template('login.html')
 
 
