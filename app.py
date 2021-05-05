@@ -29,7 +29,6 @@ def login():
             cursor = db.cursor()
             cursor.execute("SELECT username, password FROM users WHERE username = '"+username+"' and password = '"+password+"'")
             r = cursor.fetchall()
-            print(r)
             for i in r:
                 if username == i[0] and password == i[1]:
                     session['user'] = username
