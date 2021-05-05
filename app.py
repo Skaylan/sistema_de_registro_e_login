@@ -70,8 +70,8 @@ def register():
             db = sqlite3.connect('database.db')
             cursor = db.cursor()
             try:
-                cursor.execute('INSERT INTO USERS VALUES(NULL, ?, ?)', (username, password))
-                flash('Registrato com sucesso, agora você pode logar!')
+                cursor.execute('INSERT INTO users VALUES(NULL, ?, ?)', (username, password))
+                flash('Registrado com sucesso, agora você pode logar!')
             except Exception as erro:
                 if erro.__cause__ == None:
                     flash('Usuario já existe, tente outro.')

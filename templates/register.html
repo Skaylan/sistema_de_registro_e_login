@@ -18,7 +18,12 @@
 
 {% with messages = get_flashed_messages() %}
     {% for msg in messages %}
-        <h1 class="r-flash">{{ msg }}</h1>
+    {% if msg == 'Registrado com sucesso, agora você pode logar!' %}
+        <h1 style='color: green' class="r-flash">{{ msg }}</h1>
+    {% endif %}
+    {% if msg == 'Usuario já existe, tente outro.' %}
+        <h1 style='color: red' class="r-flash">{{ msg }}</h1>
+    {% endif %}
     {% endfor %}
 {% endwith %}
 
