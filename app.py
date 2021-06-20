@@ -14,6 +14,8 @@ app.secret_key = os.getenv('SECRET_KEY')
 @app.route('/')
 @app.route('/index')
 def index():
+    if 'user' in session:
+        return redirect(url_for('user'))
     return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -42,7 +44,14 @@ def login():
 def user():
     if 'user' in session:
         user = session['user']
-        return render_template('user.html', user=user)
+        db = sqlite3.connect('todo.db')
+        cursor = db.cursor()
+        cursor.execute(f"SELECT * FROM {user};")
+        todo_list = cursor.fetchall()
+        cursor.close()
+        print(session['user'])
+            
+        return render_template('user.html', user=user, todo=todo_list)
     else:
         return redirect(url_for('login'))
 
@@ -68,6 +77,7 @@ def register():
             password = request.form['password']
             db = sqlite3.connect('database.db')
             cursor = db.cursor()
+            cursor.execute('CREATE TABLE IF NOT EXISTS users(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, username TEXT NOT NULL, password TEXT NOT NULL)')
             try:
                 cursor.execute('INSERT INTO users VALUES(NULL, ?, ?)', (username, password))
                 flash('Registrado com sucesso, agora você pode logar!')
@@ -75,8 +85,41 @@ def register():
                 if erro.__cause__ == None:
                     flash('Usuario já existe, tente outro.')
             db.commit()
+
+            db2 = sqlite3.connect('todo.db')
+            cursor2 = db2.cursor()
+            cursor2.execute(f"CREATE TABLE IF NOT EXISTS {username}(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,todo TEXT NOT NULL,createdAt DATETIME DEFAULT(GETDATE()))")
+            db2.commit()
+
     return render_template('register.html')
 
+
+
+@app.route('/post', methods=['GET', 'POST'])
+def post():
+    db = sqlite3.connect('todo.db')
+    cursor = db.cursor()
+
+    if request.method == 'POST':
+        todo = request.form['add-todo']
+        print(todo)
+        cursor.execute(f"INSERT INTO {session['user']} VALUES(NULL, ?, date('now'))", (todo,))
+        cursor.close()
+        db.commit()
+        return redirect(url_for('user'))
+
+
+@app.route('/deletar', methods=['POST'])
+def deletar():
+    if request.method == 'POST':
+        req = request.form['deletar']
+        print(req)
+        db = sqlite3.connect('todo.db')
+        cursor = db.cursor()
+        cursor.execute(f"DELETE FROM todo WHERE id='{req}'")
+        cursor.close()
+        db.commit()
+        return redirect(url_for('user'))
 
 if __name__ == '__main__':
     app.run(debug=True)
