@@ -1,0 +1,268 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* HEADER SECTION */
+
+header{
+    width: 100%;
+    height: 60px;
+    background-color: rgb(27, 26, 26);
+}
+
+ul{
+    width: auto;
+    float: right;
+    margin-top: 8px;
+}
+
+li{
+    display: inline-block;
+    padding: 15px 30px;
+    margin-top: 5px;
+    font-size: large;
+    float: right;
+}
+
+a{
+    text-align: center;
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    font-size: large;
+}
+
+a:hover{
+    color: blue;
+    transition: 00.5s;
+}
+
+.h1-header{
+    position: absolute;
+    padding: 3px;
+    float: left;
+    margin-left: 2%;
+    margin-top: 3px;
+    color: white;
+
+}
+
+@media only screen and (max-width: 1000px){
+    .h1-header{
+        position: absolute;
+        left: 10px;
+    }
+}
+
+/* END HEADER SECTION */
+
+
+
+.input{
+    width: 300px;
+    height: 50px;
+    position: absolute;
+    left: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: larger;
+}
+
+.i-username{
+    top: 200px;
+}
+.i-pass{
+    top: 270px;
+}
+
+.check-box-sp{
+    position: absolute;
+    top: 400px;
+}
+
+#button-login{
+    position: absolute;
+    top: 340px;
+    left: 590px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: rgb(27, 26, 26);
+    border-radius: 10px;
+    color: white;
+    font-size: large;
+}
+
+#button-login:hover{
+    background-color: rgb(2, 83, 110);
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+
+.content{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    top: 200px;
+    text-align: center;
+    align-items: center;
+}
+
+
+.r-u-input{
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    top: 200px;
+    left: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: large;
+}
+
+.r-p-input{
+    position: absolute;
+    width: 300px;
+    height: 50px;
+    top: 270px;
+    left: 500px;
+    border-radius: 10px;
+    border: 1px solid black;
+    font-size: large;
+}
+
+.r-button{
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border: none;
+    background-color: rgb(27, 26, 26);
+    color: white;
+    border-radius: 10px;
+    left: 600px;
+    top: 340px;
+    font-size: large;
+}
+
+.r-button:hover{
+    transition: 0.5s;
+    cursor: pointer;
+    background-color: rgb(2, 83, 110);
+    color: white;
+}
+
+.h2-uname{
+    position: absolute;
+    top: 206px;
+    left: 360px;
+}
+
+.h2-pword{
+    position: absolute;
+    top: 275px;
+    left: 365px;
+}
+
+.r-flash{
+    color: green;
+}
+
+
+.l-h2-uname{
+    position: absolute;
+    top: 205px;
+    left: 340px;
+    color: black;
+}
+
+
+.l-h2-pword{
+    position: absolute;
+    top: 275px;
+    left: 340px;
+    color: black;
+}
+
+
+
+.a-logout{
+    position: absolute;
+    top: 10px;
+    left: 90%;
+    color: black;
+    font-size: 1.3rem;
+}   
+
+
+.h2-flash{
+    position: absolute;
+    top: 470px;
+    left: 480px;
+    color: red;
+}
+
+.u-flash{
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    font-size: 1rem;
+    color: red;
+}
+
+.r-flash{
+    position: absolute;
+    top: 400px;
+    left: 530px;
+    font-size: 1rem;
+
+}
+
+.user-wellcome{
+    position: absolute;
+    top: 250px;
+    left: 550px;
+
+}
+
+.i-a1{
+    color: black;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+}
+
+.i-a2{
+    color: black;
+    font-size: 1.5rem;
+    border-bottom: 1px solid black;
+}
+
+.l-title{
+    position: absolute;
+    font-size: 2rem;
+    top: 130px;
+    left: 600px;
+}
+
+
+.r-title{
+    position: absolute;
+    font-size: 2rem;
+    top: 130px;
+    left: 550px;
+}

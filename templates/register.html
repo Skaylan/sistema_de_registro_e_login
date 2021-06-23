@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block link %}<link rel="stylesheet" href="/static/style.css">{% endblock %}
+{% block title %}Rigister{% endblock %}
+
+{% block header %}
+<h1 class="h1-header">Sky System</h1>
+<header>
+    <nav>
+        <li><a href="/register">Registre-se</a></li>
+        <li><a href="/login">Entrar</a></li>
+        <li><a href="/index">Home</a></li>
+    </nav>
+</header>
+
+{% endblock %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+    {% if msg == 'Registrado com sucesso, agora você pode logar!' %}
+        <h1 style='color: green' class="r-flash">{{ msg }}</h1>
+    {% endif %}
+    {% if msg == 'Usuario já existe, tente outro.' %}
+        <h1 style='color: red' class="r-flash">{{ msg }}</h1>
+    {% endif %}
+    {% endfor %}
+{% endwith %}
+
+<h1 class="r-title">Registre-se</h1>
+<h2 class="h2-uname">Username</h2>
+<h2 class="h2-pword">Password</h2>
+<form method="POST">
+    <input class="r-u-input" type="text" name="username" autocomplete="off" placeholder="Type Your Username" required>
+    <input class="r-p-input" type="text" name="password" autocomplete="off" placeholder="Type your Password" required>
+    <button class="r-button">Sing in</button>
+</form>
+
+{% endblock %}

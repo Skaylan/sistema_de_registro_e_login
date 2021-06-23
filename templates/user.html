@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block link %} <link rel="stylesheet" href="/static/todo-style.css"> {% endblock %}
+{% block title %}User Page{% endblock %}
+
+{% block header %}
+<a class="a-logout" href="/logout">Logout</a>
+{% endblock %}
+
+{% block content %}
+    <div class="input">
+        <form action="/post" method="POST">
+            <input type="text" name="add-todo" id="input">
+            <button id="button">Adicionar</button>
+        </form>
+    </div>
+
+    <div class="display">
+        {% for item in todo %}
+            <table>
+                <tr>
+                    <th>TODO</th>
+                    <th>CRIADO EM</th>
+                    <th>AÇÃO</th>
+                </tr>
+                <tr>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>
+                        <form action="/deletar" method="POST">
+                            <input type="hidden" value="{{ item[0] }}" name="deletar">
+                            <button id="deletar">Deletar</button>
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        {% endfor %}
+    </div>
+
+{% with messages = get_flashed_messages() %}
+    {% for msg in messages %}
+        <h1 class="u-flash">{{ msg }}</h1>
+    {% endfor %}
+{% endwith %}
+
+{% endblock %}
