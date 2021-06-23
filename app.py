@@ -111,15 +111,17 @@ def post():
 
 @app.route('/deletar', methods=['POST'])
 def deletar():
-    if request.method == 'POST':
-        req = request.form['deletar']
-        print(req)
-        db = sqlite3.connect('todo.db')
-        cursor = db.cursor()
-        cursor.execute(f"DELETE FROM todo WHERE id='{req}'")
-        cursor.close()
-        db.commit()
-        return redirect(url_for('user'))
+    if 'user' in session:
+
+        if request.method == 'POST':
+            req = request.form['deletar']
+            print(req)
+            db = sqlite3.connect('todo.db')
+            cursor = db.cursor()
+            cursor.execute(f"DELETE FROM {session['user']} WHERE id='{req}'")
+            cursor.close()
+            db.commit()
+            return redirect(url_for('user'))
 
 if __name__ == '__main__':
     app.run(debug=True)
