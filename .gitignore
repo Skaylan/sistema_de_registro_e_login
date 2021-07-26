@@ -127,3 +127,5 @@ dmypy.json
 #database stuff
 *.db
 *.sql
+database.db
+todo.db
